@@ -41,10 +41,15 @@ route::middleware(['auth'])->group(function(){
 
 
     Route::resource(('/suppliers'),App\Http\Controllers\SupplierController::class)->middleware('role:admin');
-   
+
+    Route::resource(('/clientes'),App\Http\Controllers\ClientAdminController::class)->middleware('role:admin');
+
 
     Route::get('/suppliers/{supplier}/delete',[App\Http\Controllers\SupplierController::class, 'delete'])->middleware('role:admin')
     -> name('suppliers.delete');
+
+    Route::get('/clientes/{cliente}/delete',[App\Http\Controllers\ClientAdminController::class, 'delete'])->middleware('role:admin')
+    -> name('clientes.delete');
 
 });
 
